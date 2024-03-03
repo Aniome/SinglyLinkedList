@@ -6,5 +6,5 @@ class Node<T> {
         this.data = data;
     }
     T data;
-    Node next;
+    Node<T> next;
 }

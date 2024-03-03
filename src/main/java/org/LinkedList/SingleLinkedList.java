@@ -1,8 +1,5 @@
 package org.LinkedList;
 
-import java.util.Collections;
-import java.util.List;
-
 public class SingleLinkedList<T> {
 
     private Node<T> head;
@@ -10,10 +7,10 @@ public class SingleLinkedList<T> {
     private int size;
     public void add(T data){
         if (head == null){
-            head = new Node(data);
+            head = new Node<>(data);
             tail = head;
         } else {
-            Node node = new Node(data);
+            Node<T> node = new Node<>(data);
             tail.next = node;
             tail = node;
         }
@@ -21,19 +18,19 @@ public class SingleLinkedList<T> {
     }
 
     public void add(int index, T data){
-        Node node = head;
+        Node<T> node = head;
         for (int i = 0; i < index; i++){
             node = node.next;
         }
-        Node New = new Node(data);
+        Node<T> New = new Node<>(data);
         New.next = node.next;
         node.next = New;
         size++;
     }
 
     public boolean remove(Object object){
-        Node node = head;
-        Node prev = null;
+        Node<T> node = head;
+        Node<T> prev = null;
         for (int i = 0; i < size; i++){
             if (node.data.equals(object)){
                 remove(node, prev);
@@ -45,7 +42,7 @@ public class SingleLinkedList<T> {
         return false;
     }
 
-    private void remove(Node node, Node prev){
+    private void remove(Node<T> node, Node<T> prev){
         if (prev == null){
             if (head == tail)
                 tail = null;
@@ -82,7 +79,7 @@ public class SingleLinkedList<T> {
     }
 
     public void show(){
-        Node node = head;
+        Node<T> node = head;
         for(int i = 0; i < size; i++){
             System.out.println(i + " = " + node.data);
             node = node.next;
