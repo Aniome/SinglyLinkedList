@@ -1,10 +1,10 @@
 package org.LinkedList;
 
-class Node {
+class Node<T> {
 
-    public Node(int data){
+    public Node(T data){
         this.data = data;
     }
-    int data;
+    T data;
     Node next;
 }
