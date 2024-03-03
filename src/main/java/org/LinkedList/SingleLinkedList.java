@@ -5,8 +5,8 @@ import java.util.List;
 
 public class SingleLinkedList<T> {
 
-    private Node head;
-    private Node tail;
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
     public void add(T data){
         if (head == null){
@@ -32,14 +32,53 @@ public class SingleLinkedList<T> {
     }
 
     public boolean remove(Object object){
-
-
-        return true;
+        Node node = head;
+        Node prev = null;
+        for (int i = 0; i < size; i++){
+            if (node.data.equals(object)){
+                remove(node, prev);
+                return true;
+            }
+            prev = node;
+            node = node.next;
+        }
+        return false;
     }
 
-    public Integer remove(int index){
+    private void remove(Node node, Node prev){
+        if (prev == null){
+            if (head == tail)
+                tail = null;
+            head = node.next;
+        } else {
+            if (tail == node){
+                tail = prev;
+            }
+            prev.next = node.next;
+        }
+        node.next = null;
+        node.data = null;
+        size--;
+    }
 
-        return 0;
+    public T remove(int index){
+        if (index == size)
+            return null;
+        if (index == 0){
+            Node<T> newHead = head.next;
+            head.next = null;
+            head.data = null;
+            head = newHead;
+            return newHead.data;
+        }
+        Node<T> node, prev = head;
+        for (int i = 0; i < index - 1; i++){
+            prev = prev.next;
+        }
+        node = prev.next;
+        prev.next = node.next;
+        node.next = null;
+        return node.data;
     }
 
     public void show(){
@@ -54,7 +93,6 @@ public class SingleLinkedList<T> {
         return size;
     }
 
-    //remove(Object) (index)
     //inversion
     //get
     //set
