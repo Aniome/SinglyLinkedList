@@ -1,5 +1,7 @@
 package org.LinkedList;
 
+import java.util.Hashtable;
+
 public class SingleLinkedList<T> {
 
     private Node<T> head;
@@ -84,6 +86,14 @@ public class SingleLinkedList<T> {
             System.out.println(i + " = " + node.data);
             node = node.next;
         }
+    }
+
+    public T get(int index){
+        Node<T> node = head;
+        for (int i = 0; i <= index; i++){
+            node = node.next;
+        }
+        return node.data;
     }
 
     public int size(){
