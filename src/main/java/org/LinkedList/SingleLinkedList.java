@@ -1,7 +1,5 @@
 package org.LinkedList;
 
-import java.util.Hashtable;
-
 public class SingleLinkedList<T> {
 
     private Node<T> head;
@@ -88,6 +86,34 @@ public class SingleLinkedList<T> {
         }
     }
 
+    public SingleLinkedList<T> inversion(){
+        Node<T> previous = null, next = null, current = null;
+        for (int i = 0; i < size; i++){
+            if (i == 0){
+                current = head;
+                next = current.next;
+                tail = current;
+            } else if (i == size-1){
+                previous = current;
+                current = next;
+                current.next = previous;
+                head = current;
+            } else {
+                previous = current;
+                current = next;
+                next = next.next;
+                current.next = previous;
+            }
+        }
+        return this;
+    }
+
+    private void swapOfInversion(Node<T> previous, Node<T> next, Node<T> current){
+        previous = current;
+        current = next;
+        next = next.next;
+    }
+
     public T get(int index){
         Node<T> node = head;
         for (int i = 0; i <= index; i++){
@@ -98,6 +124,17 @@ public class SingleLinkedList<T> {
 
     public int size(){
         return size;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder SingleLinkedList = new StringBuilder();
+        Node<T> node = head;
+        for(int i = 0; i < size; i++){
+            SingleLinkedList.append(i).append(" = ").append(node.data).append("\n");
+            node = node.next;
+        }
+        return SingleLinkedList.toString();
     }
 
     //inversion
