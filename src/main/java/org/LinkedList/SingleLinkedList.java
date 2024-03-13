@@ -108,18 +108,22 @@ public class SingleLinkedList<T> {
         return this;
     }
 
-    private void swapOfInversion(Node<T> previous, Node<T> next, Node<T> current){
-        previous = current;
-        current = next;
-        next = next.next;
+    public T get(int index){
+        return getNode(index).data;
     }
 
-    public T get(int index){
+    public T set(int index, T data){
+        Node<T> node = getNode(index);
+        node.data = data;
+        return node.data;
+    }
+
+    private Node<T> getNode(int index){
         Node<T> node = head;
         for (int i = 0; i <= index; i++){
             node = node.next;
         }
-        return node.data;
+        return node;
     }
 
     public int size(){
@@ -137,9 +141,6 @@ public class SingleLinkedList<T> {
         return SingleLinkedList.toString();
     }
 
-    //inversion
-    //get
-    //set
     //contains
     //toString
     //isEmpty

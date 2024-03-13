@@ -15,6 +15,5 @@ public class Main {
 
         List<Integer> list = new LinkedList<>();
 
-
     }
 }
