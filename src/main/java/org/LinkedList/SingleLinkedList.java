@@ -141,9 +141,11 @@ public class SingleLinkedList<T> {
         return SingleLinkedList.toString();
     }
 
+    public boolean isEmpty(){
+        return head == null;
+    }
+
     //contains
-    //toString
-    //isEmpty
     //clear
     //indexOf(Object) equals
     //lastIndexOf(Object)
