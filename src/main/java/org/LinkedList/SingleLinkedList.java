@@ -145,6 +145,16 @@ public class SingleLinkedList<T> {
         return head == null;
     }
 
+    public boolean contains(T data){
+        Node<T> node = head;
+        for (int i = 0; i <= size; i++){
+            if (node.data.equals(data)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //contains
     //clear
     //indexOf(Object) equals
