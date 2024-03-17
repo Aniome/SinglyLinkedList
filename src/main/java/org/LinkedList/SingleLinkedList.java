@@ -1,5 +1,10 @@
 package org.LinkedList;
 
+import java.util.Collections;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class SingleLinkedList<T> {
 
     private Node<T> head;
@@ -132,6 +137,9 @@ public class SingleLinkedList<T> {
 
     @Override
     public String toString() {
+        if (head == null) {
+            return "List is empty";
+        }
         StringBuilder SingleLinkedList = new StringBuilder();
         Node<T> node = head;
         for(int i = 0; i < size; i++){
@@ -155,8 +163,19 @@ public class SingleLinkedList<T> {
         return false;
     }
 
-    //contains
-    //clear
+    public void clear() {
+        Node<T> previous = head, current = previous.next;
+        for (int i = 0; i < size; i++){
+            previous.data = null;
+            previous.next = null;
+            previous = current;
+            if (current != tail)
+                current = previous.next;
+        }
+        head = null;
+        tail = null;
+    }
+
     //indexOf(Object) equals
     //lastIndexOf(Object)
 

@@ -9,7 +9,8 @@ public class Main {
         singleLinkedList.add(1);
         singleLinkedList.add(2);
         singleLinkedList.add(3);
-        singleLinkedList.inversion();
+        //singleLinkedList.inversion();
+        singleLinkedList.clear();
         System.out.println(singleLinkedList);
 
 
