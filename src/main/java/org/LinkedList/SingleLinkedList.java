@@ -1,10 +1,5 @@
 package org.LinkedList;
 
-import java.util.Collections;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 public class SingleLinkedList<T> {
 
     private Node<T> head;
@@ -81,14 +76,6 @@ public class SingleLinkedList<T> {
         prev.next = node.next;
         node.next = null;
         return node.data;
-    }
-
-    public void show(){
-        Node<T> node = head;
-        for(int i = 0; i < size; i++){
-            System.out.println(i + " = " + node.data);
-            node = node.next;
-        }
     }
 
     public SingleLinkedList<T> inversion(){
@@ -176,7 +163,18 @@ public class SingleLinkedList<T> {
         tail = null;
     }
 
-    //indexOf(Object) equals
+    public int indexOf(T data) {
+        Node<T> node = head;
+        for (int i = 0; i < size; i++) {
+            if (node.data.equals(data)){
+                return i;
+            }
+            node = node.next;
+        }
+        return -1;
+    }
+
+    //equals
     //lastIndexOf(Object)
 
 }

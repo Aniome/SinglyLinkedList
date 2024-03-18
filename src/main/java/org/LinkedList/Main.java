@@ -7,10 +7,11 @@ public class Main {
     public static void main(String[] args) {
         SingleLinkedList<Integer> singleLinkedList = new SingleLinkedList<>();
         singleLinkedList.add(1);
-        singleLinkedList.add(2);
         singleLinkedList.add(3);
+        singleLinkedList.add(2);
         //singleLinkedList.inversion();
-        singleLinkedList.clear();
+        //singleLinkedList.clear();
+        System.out.println(singleLinkedList.indexOf(1));
         System.out.println(singleLinkedList);
 
 
