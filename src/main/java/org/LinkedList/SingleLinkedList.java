@@ -174,7 +174,17 @@ public class SingleLinkedList<T> {
         return -1;
     }
 
-    //equals
-    //lastIndexOf(Object)
+    public int lastIndexOf(T data) {
+        Node<T> node = head;
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (node.data.equals(data)){
+                index = i;
+            }
+            node = node.next;
+        }
+        return index;
+    }
 
+    //equals
 }
