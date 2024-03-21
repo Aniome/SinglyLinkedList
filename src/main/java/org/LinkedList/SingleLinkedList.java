@@ -1,5 +1,7 @@
 package org.LinkedList;
 
+import java.util.Objects;
+
 public class SingleLinkedList<T> {
 
     private Node<T> head;
@@ -28,11 +30,11 @@ public class SingleLinkedList<T> {
         size++;
     }
 
-    public boolean remove(Object object){
+    public boolean remove(Object data){
         Node<T> node = head;
         Node<T> prev = null;
         for (int i = 0; i < size; i++){
-            if (node.data.equals(object)){
+            if (node.data.equals(data)){
                 remove(node, prev);
                 return true;
             }
@@ -58,25 +60,25 @@ public class SingleLinkedList<T> {
         size--;
     }
 
-    public T remove(int index){
-        if (index == size)
-            return null;
-        if (index == 0){
-            Node<T> newHead = head.next;
-            head.next = null;
-            head.data = null;
-            head = newHead;
-            return newHead.data;
-        }
-        Node<T> node, prev = head;
-        for (int i = 0; i < index - 1; i++){
-            prev = prev.next;
-        }
-        node = prev.next;
-        prev.next = node.next;
-        node.next = null;
-        return node.data;
-    }
+//    public T remove(int index){
+//        if (index == size)
+//            return null;
+//        if (index == 0){
+//            Node<T> newHead = head.next;
+//            head.next = null;
+//            head.data = null;
+//            head = newHead;
+//            return newHead.data;
+//        }
+//        Node<T> node, prev = head;
+//        for (int i = 0; i < index - 1; i++){
+//            prev = prev.next;
+//        }
+//        node = prev.next;
+//        prev.next = node.next;
+//        node.next = null;
+//        return node.data;
+//    }
 
     public SingleLinkedList<T> inversion(){
         Node<T> previous = null, next = null, current = null;
@@ -186,5 +188,16 @@ public class SingleLinkedList<T> {
         return index;
     }
 
-    //equals
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        SingleLinkedList<?> that = (SingleLinkedList<?>) object;
+        return size == that.size && Objects.equals(head, that.head) && Objects.equals(tail, that.tail);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(head, tail, size);
+    }
 }

@@ -9,13 +9,15 @@ public class Main {
         singleLinkedList.add(1);
         singleLinkedList.add(3);
         singleLinkedList.add(2);
+        singleLinkedList.add(4);
+        singleLinkedList.add(0, 0);
+        singleLinkedList.remove(4);
         //singleLinkedList.inversion();
         //singleLinkedList.clear();
-        System.out.println(singleLinkedList.indexOf(1));
+        System.out.println(singleLinkedList.lastIndexOf(3));
         System.out.println(singleLinkedList);
 
-
-        List<Integer> list = new LinkedList<>();
-
+        LinkedList<Integer> list = new LinkedList<>();
+        list.remove(34);
     }
 }
