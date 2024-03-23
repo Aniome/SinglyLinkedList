@@ -30,7 +30,7 @@ public class SingleLinkedList<T> {
         size++;
     }
 
-    public boolean remove(Object data){
+    public boolean remove(T data){
         Node<T> node = head;
         Node<T> prev = null;
         for (int i = 0; i < size; i++){
@@ -60,28 +60,30 @@ public class SingleLinkedList<T> {
         size--;
     }
 
-//    public T remove(int index){
-//        if (index == size)
-//            return null;
-//        if (index == 0){
-//            Node<T> newHead = head.next;
-//            head.next = null;
-//            head.data = null;
-//            head = newHead;
-//            return newHead.data;
-//        }
-//        Node<T> node, prev = head;
-//        for (int i = 0; i < index - 1; i++){
-//            prev = prev.next;
-//        }
-//        node = prev.next;
-//        prev.next = node.next;
-//        node.next = null;
-//        return node.data;
-//    }
+    public T removeByIndex(int index){
+        if (index == size)
+            return null;
+        if (index == 0){
+            Node<T> newHead = head.next;
+            head.next = null;
+            head.data = null;
+            head = newHead;
+            size--;
+            return newHead.data;
+        }
+        Node<T> node, prev = head;
+        for (int i = 0; i < index - 1; i++){
+            prev = prev.next;
+        }
+        node = prev.next;
+        prev.next = node.next;
+        node.next = null;
+        size--;
+        return node.data;
+    }
 
     public SingleLinkedList<T> inversion(){
-        Node<T> previous = null, next = null, current = null;
+        Node<T> previous, next = null, current = null;
         for (int i = 0; i < size; i++){
             if (i == 0){
                 current = head;
@@ -132,7 +134,9 @@ public class SingleLinkedList<T> {
         StringBuilder SingleLinkedList = new StringBuilder();
         Node<T> node = head;
         for(int i = 0; i < size; i++){
-            SingleLinkedList.append(i).append(" = ").append(node.data).append("\n");
+            SingleLinkedList.append(i).append(" = ").append(node.data);
+            if (i != size-1)
+                SingleLinkedList.append("\n");
             node = node.next;
         }
         return SingleLinkedList.toString();
@@ -148,6 +152,7 @@ public class SingleLinkedList<T> {
             if (node.data.equals(data)){
                 return true;
             }
+            node = node.next;
         }
         return false;
     }
